@@ -5,5 +5,9 @@
   "license": "MIT",
   "dependencies": {
     "webpack": "^2.5.1"
+  },
+  "scripts": {
+    "dev": "webpack --config webpack.config.js",
+    "prod": "webpack -p --config webpack.config.js"
   }
 }
