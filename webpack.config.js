@@ -2,13 +2,14 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        'main': './src/bar.js'
+        'foo': './src/foo.js',
+        'bar': './src/bar.js'
     },
     resolve: {
         modules: ['node_modules']
     },
     output: {
-        path: path.resolve('./build/www'),
+        path: path.resolve('./build'),
         filename: '[name].bundle.js',
         chunkFilename: '[id].chunk.js'
     }
