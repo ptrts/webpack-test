@@ -1,10 +1,8 @@
 const path = require('path');
-const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
-const webpack = require('webpack');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
-        'foo': './src/foo.js',
         'bar': './src/bar.js'
     },
     resolve: {
@@ -13,11 +11,11 @@ module.exports = {
     output: {
         path: path.resolve('./build'),
         filename: '[name].bundle.js',
-        chunkFilename: '[id].chunk.js'
+        chunkFilename: '[name].chunk.js'
     },
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'common'
+        new HTMLWebpackPlugin({
+            title: 'Code Splitting'
         })
     ]
 };
