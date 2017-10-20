@@ -1,5 +1,6 @@
 const path = require('path');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
+const webpack = require('webpack');
 
 module.exports = {
     entry: {
@@ -15,8 +16,8 @@ module.exports = {
         chunkFilename: '[id].chunk.js'
     },
     plugins: [
-        new CommonsChunkPlugin({
-            names: ['manifest'].reverse()
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'common'
         })
     ]
 };
