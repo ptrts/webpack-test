@@ -1,21 +1,33 @@
 const path = require('path');
+const webpack = require('webpack');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
-        'bar': './src/bar.js'
+        vendor: './src/vendor.js',
+        main: './src/main.js'
     },
     resolve: {
         modules: ['node_modules']
     },
     output: {
         path: path.resolve('./build'),
-        filename: '[name].bundle.js',
-        chunkFilename: '[name].chunk.js'
+        filename: '[name].[chunkhash].bundle.js'
     },
     plugins: [
+        new CleanWebpackPlugin([
+            'build'
+        ]),
         new HTMLWebpackPlugin({
-            title: 'Code Splitting'
+            title: 'Caching'
+        }),
+        new webpack.HashedModuleIdsPlugin(),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor'
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'runtime'
         })
     ]
 };
