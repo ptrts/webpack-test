@@ -4,3 +4,7 @@ export class Foo {
         console.log('This is Foo');
     }
 }
+
+console.log('Hello!');
+
+export default 'Hello!';

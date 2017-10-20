@@ -3,7 +3,6 @@ const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 
 module.exports = {
     entry: {
-        'foo': './src/foo.js',
         'bar': './src/bar.js'
     },
     resolve: {
@@ -16,7 +15,7 @@ module.exports = {
     },
     plugins: [
         new CommonsChunkPlugin({
-            names: ['manifest'].reverse()
+            names: ['manifest', 'common'].reverse()
         })
     ]
 };
